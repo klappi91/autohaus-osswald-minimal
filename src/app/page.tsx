@@ -1,65 +1,169 @@
 import Image from "next/image";
+import Link from "next/link";
+import { AnimatedSection } from "@/components/animated-section";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+
+const services = [
+  {
+    title: "Inspektion",
+    description:
+      "Speziell ausgebildete Pruefer sorgen dafuer, dass Ihr Fahrzeug sicher unterwegs ist.",
+    href: "/leistungen/inspektion",
+  },
+  {
+    title: "24h-Annahme",
+    description:
+      "Geben Sie Ihr Fahrzeug ab, wann immer es Ihnen passt -- rund um die Uhr.",
+    href: "/leistungen/24-stunden-annahme",
+  },
+  {
+    title: "Ersatzwagen",
+    description:
+      "Bleiben Sie mobil. Wir stellen Ihnen waehrend der Reparatur einen Leihwagen.",
+    href: "/leistungen/ersatzwagen",
+  },
+  {
+    title: "Winterservice",
+    description:
+      "Reifenwechsel, Frostschutz und mehr -- sicher durch die kalte Jahreszeit.",
+    href: "/leistungen/reifen-und-winterservice",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <div>
+      {/* Hero */}
+      <section className="relative h-[70vh] min-h-[500px] w-full">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src="/images/hero.jpg"
+          alt="Autohaus Oßwald – Moderne Kfz-Werkstatt in Diepholz"
+          fill
           priority
+          className="object-cover"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+          <h1 className="text-4xl font-light tracking-tight text-white md:text-6xl lg:text-7xl">
+            Autohaus Oßwald
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <Separator className="mx-auto my-6 w-16 bg-[#f28627]" />
+          <p className="text-lg font-light tracking-wide text-white/90 md:text-xl">
+            Meisterqualitaet fuer alle Marken
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Welcome */}
+      <section className="mx-auto max-w-3xl px-6 py-24 md:py-32">
+        <AnimatedSection>
+          <h2 className="text-2xl font-light tracking-tight md:text-3xl">
+            Herzlich willkommen im Autohaus Oßwald in Diepholz
+          </h2>
+          <Separator className="my-8 w-12 bg-[#f28627]" />
+          <p className="leading-relaxed text-muted-foreground">
+            Sie suchen einen vertrauensvollen und zuverlaessigen Ansprechpartner,
+            wenn es um die Wartung oder die Reparatur Ihres Autos geht? Dann sind
+            Sie bei uns genau richtig!
+          </p>
+          <p className="mt-4 leading-relaxed text-muted-foreground">
+            Mit unserem kompetenten Rundum-Service fuer alle Marken bietet Ihnen
+            unsere Kfz-Reparaturwerkstatt Sofortservice und Meisterqualitaet zu
+            erschwinglichen Preisen. Unser Team beantwortet Ihnen jederzeit gerne
+            alle offenen Fragen.
+          </p>
+        </AnimatedSection>
+
+        {/* Steinschlag Badge */}
+        <AnimatedSection delay={0.2} className="mt-12">
+          <div className="rounded-lg border border-[#f28627]/20 bg-[#f28627]/5 px-6 py-4">
+            <p className="text-sm font-medium tracking-wide text-[#f28627]">
+              Jetzt NEU
+            </p>
+            <p className="mt-1 text-lg font-light">Steinschlag Reparatur</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Schnell, sauber und zu fairen Preisen -- sprechen Sie uns an.
+            </p>
+          </div>
+        </AnimatedSection>
+      </section>
+
+      {/* Services */}
+      <section className="border-t bg-secondary/30 px-6 py-24 md:py-32">
+        <div className="mx-auto max-w-5xl">
+          <AnimatedSection>
+            <p className="text-center text-sm font-medium tracking-widest text-[#f28627] uppercase">
+              Leistungen
+            </p>
+            <h2 className="mt-3 text-center text-2xl font-light tracking-tight md:text-3xl">
+              Was wir fuer Sie tun
+            </h2>
+          </AnimatedSection>
+
+          <div className="mt-16 grid gap-px bg-border sm:grid-cols-2">
+            {services.map((service, i) => (
+              <AnimatedSection key={service.title} delay={0.1 * (i + 1)}>
+                <Link
+                  href={service.href}
+                  className="group flex h-full flex-col bg-background p-8 transition-colors hover:bg-secondary/50"
+                >
+                  <h3 className="text-lg font-medium tracking-tight">
+                    {service.title}
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    {service.description}
+                  </p>
+                  <span className="mt-4 text-sm font-medium text-[#f28627] opacity-0 transition-opacity group-hover:opacity-100">
+                    Mehr erfahren &rarr;
+                  </span>
+                </Link>
+              </AnimatedSection>
+            ))}
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* CTA */}
+      <section className="px-6 py-24 md:py-32">
+        <AnimatedSection className="mx-auto max-w-2xl text-center">
+          <p className="text-sm font-medium tracking-widest text-[#f28627] uppercase">
+            Kontakt
+          </p>
+          <h2 className="mt-3 text-2xl font-light tracking-tight md:text-3xl">
+            Wir sind fuer Sie da
+          </h2>
+          <Separator className="mx-auto my-8 w-12 bg-[#f28627]" />
+          <p className="text-muted-foreground">
+            Autohaus Oßwald GmbH &amp; Co. KG
+            <br />
+            Auf dem Esch 21, 49356 Diepholz
+          </p>
+          <p className="mt-4 text-2xl font-light tracking-tight">
+            <a href="tel:+495441975551" className="hover:text-[#f28627] transition-colors">
+              05441 / 975551
+            </a>
+          </p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Mo&ndash;Fr 8:00&ndash;17:00 &middot; Sa 9:00&ndash;12:00
+          </p>
+          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <Button
+              render={<Link href="/kontakt" />}
+              className="h-10 rounded-full bg-[#f28627] px-6 text-white hover:bg-[#d9741f]"
+            >
+              Termin vereinbaren
+            </Button>
+            <Button
+              variant="outline"
+              render={<a href="mailto:autohaus-osswald@web.de" />}
+              className="h-10 rounded-full px-6"
+            >
+              E-Mail schreiben
+            </Button>
+          </div>
+        </AnimatedSection>
+      </section>
     </div>
   );
 }
