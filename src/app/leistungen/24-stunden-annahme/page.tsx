@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { PhoneIcon, ArrowRightIcon } from "lucide-react"
 import { AnimatedSection } from "@/components/animated-section"
@@ -21,32 +22,42 @@ const otherServices = [
 
 export default function AnnahmePage() {
   return (
-    <div className="py-24 px-6">
-      <div className="mx-auto max-w-3xl">
-        {/* Breadcrumb */}
-        <AnimatedSection>
-          <nav className="mb-12">
-            <ol className="flex items-center gap-2 text-sm font-light text-foreground/50">
-              <li>
-                <Link
-                  href="/leistungen"
-                  className="transition-colors hover:text-foreground"
-                >
-                  Leistungen
-                </Link>
-              </li>
-              <li>/</li>
-              <li className="text-foreground">24-Stunden-Annahme</li>
-            </ol>
-          </nav>
-        </AnimatedSection>
+    <div>
+      {/* Hero */}
+      <section className="relative h-[40vh] min-h-[320px] w-full overflow-hidden">
+        <Image
+          src="/images/service-24h-annahme.webp"
+          alt="24-Stunden Fahrzeugannahme"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 flex items-end">
+          <div className="mx-auto w-full max-w-3xl px-6 pb-12">
+            <nav className="mb-4">
+              <ol className="flex items-center gap-2 text-sm font-light text-white/70">
+                <li>
+                  <Link
+                    href="/leistungen"
+                    className="transition-colors hover:text-white"
+                  >
+                    Leistungen
+                  </Link>
+                </li>
+                <li>/</li>
+                <li className="text-white">24-Stunden-Annahme</li>
+              </ol>
+            </nav>
+            <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+              24-Stunden-Annahme
+            </h1>
+          </div>
+        </div>
+      </section>
 
-        {/* Title */}
-        <AnimatedSection>
-          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            24-Stunden-Annahme
-          </h1>
-        </AnimatedSection>
+      <div className="py-24 px-6">
+        <div className="mx-auto max-w-3xl">
 
         {/* Content */}
         <AnimatedSection delay={0.1}>
@@ -111,6 +122,7 @@ export default function AnnahmePage() {
             ))}
           </nav>
         </AnimatedSection>
+        </div>
       </div>
     </div>
   )
